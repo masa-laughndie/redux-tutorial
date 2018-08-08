@@ -1,4 +1,5 @@
 import expect from "expect";
+import { createStore } from "redux";
 import "./index.css";
 
 const counter = (state = 0, action) => {
@@ -11,6 +12,10 @@ const counter = (state = 0, action) => {
       return state;
   }
 };
+
+const store = createStore(counter);
+
+console.log(store.getState());
 
 expect(counter(0, { type: "INCREMENT" })).toEqual(1);
 expect(counter(1, { type: "INCREMENT" })).toEqual(2);
