@@ -1,4 +1,4 @@
-import except from "expect";
+import expect from "expect";
 import deepFreeze from "deep-freeze";
 
 function addCounter(list) {
@@ -19,7 +19,7 @@ function testAddCounter() {
 
   deepFreeze(listBefore);
 
-  except(addCounter(listBefore)).toEqual(listAfter);
+  expect(addCounter(listBefore)).toEqual(listAfter);
 }
 
 function testRemoveCounter() {
