@@ -34,6 +34,15 @@ function todos(state = [], action) {
   }
 }
 
+function visibilityFilter(state = "SHOW_ALL", action) {
+  switch (action.type) {
+    case "SET_VISIBLITY_FILTER":
+      return action.filter;
+    default:
+      return state;
+  }
+}
+
 function testAddTodo() {
   const stateBefore = [];
   const action = {
@@ -90,6 +99,13 @@ function testToggleTodo() {
   deepFreeze(action);
 
   expect(todos(stateBefore, action)).toEqual(stateAfter);
+}
+
+function todoApp(state = [], action) {
+  return {
+    todos: todos(state.todos, action),
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action)
+  };
 }
 
 testAddTodo();
