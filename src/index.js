@@ -2,6 +2,7 @@ import expect from "expect";
 import { createStore } from "redux";
 import React from "react";
 import ReactDOM from "react-dom";
+import "./avoiding-array-mutations";
 import "./index.css";
 
 const counter = (state = 0, action) => {
