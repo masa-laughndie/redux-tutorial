@@ -15,11 +15,17 @@ const counter = (state = 0, action) => {
 
 const store = createStore(counter);
 
-console.log(store.getState());
+const render = () => {
+  document.body.innerText = store.getState();
+};
 
-store.dispatch({ type: "INCREMENT" });
+store.subscribe(render);
 
-console.log(store.getState());
+render();
+
+document.addEventListener("click", () => {
+  store.dispatch({ type: "INCREMENT" });
+});
 
 expect(counter(0, { type: "INCREMENT" })).toEqual(1);
 expect(counter(1, { type: "INCREMENT" })).toEqual(2);
