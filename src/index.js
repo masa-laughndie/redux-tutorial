@@ -46,10 +46,4 @@ const render = () => {
 
 store.subscribe(render);
 
-function onClick() {
-  store.dispatch({ type: "INCREMENT" });
-}
-
-document.addEventListener("click", onClick);
-
 render();
