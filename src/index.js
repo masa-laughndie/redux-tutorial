@@ -2,6 +2,7 @@ import { createStore } from "redux";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import AddTodo from "./components/AddTodo";
+import Footer from "./components/Footer";
 import TodoList from "./components/TodoList";
 import todoApp from "./reducers/todoApp";
 
@@ -18,26 +19,6 @@ function getVisibleTodos(todos, filter) {
     case "SHOW_ACTIVE":
       return todos.filter(t => !t.completed);
   }
-}
-
-function FilterLink({ filter, currentFilter, children }) {
-  if (filter === currentFilter) {
-    return <span>{children}</span>;
-  }
-  return (
-    <a
-      href="#"
-      onClick={e => {
-        e.preventDefault();
-        store.dispatch({
-          type: "SET_VISIBILITY_FILTER",
-          filter
-        });
-      }}
-    >
-      {children}
-    </a>
-  );
 }
 
 export default class TodoApp extends Component {
@@ -64,18 +45,15 @@ export default class TodoApp extends Component {
             });
           }}
         />
-        <p>
-          Show:{" "}
-          <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>
-            All
-          </FilterLink>{" "}
-          <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter}>
-            Active
-          </FilterLink>{" "}
-          <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter}>
-            Completed
-          </FilterLink>
-        </p>
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterClick={filter => {
+            store.dispatch({
+              type: "SET_VISIBZILITY_FILTER",
+              filter
+            });
+          }}
+        />
       </div>
     );
   }
