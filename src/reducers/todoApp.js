@@ -111,3 +111,5 @@ function todoApp(state = [], action) {
 testAddTodo();
 testToggleTodo();
 console.log("[writing-a-todo-list-reducer] all tests passed!");
+
+export default todoApp;
