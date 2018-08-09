@@ -1,6 +1,6 @@
 import expect from "expect";
 import deepFreeze from "deep-freeze";
-import combineReducers from "../utils/combineReducers";
+import { combineReducers } from "redux";
 
 function todo(state = [], action) {
   switch (action.type) {
@@ -37,7 +37,7 @@ function todos(state = [], action) {
 
 function visibilityFilter(state = "SHOW_ALL", action) {
   switch (action.type) {
-    case "SET_VISIBLITY_FILTER":
+    case "SET_VISIBILITY_FILTER":
       return action.filter;
     default:
       return state;
