@@ -64,7 +64,7 @@ export default class TodoApp extends Component {
         </button>
         <ul>
           <TodoList
-            todos={todos}
+            todos={visibleTodos}
             onTodoClick={id => {
               store.dispatch({
                 type: "TOGGLE_TODO",
@@ -72,7 +72,6 @@ export default class TodoApp extends Component {
               });
             }}
           />
-          ))}
         </ul>
         <p>
           Show:{" "}
