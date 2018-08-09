@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Todo from "./components/Todo";
+import TodoList from "./components/TodoList";
 import todoApp from "./reducers/todoApp";
 
 const store = createStore(todoApp);
@@ -63,18 +63,15 @@ export default class TodoApp extends Component {
           Add Todo
         </button>
         <ul>
-          {visibleTodos.map(todo => (
-            <Todo
-              key={todo.id}
-              onClick={() => {
-                store.dispatch({
-                  type: "TOGGLE_TODO",
-                  id: todo.id
-                });
-              }}
-              completed={todo.completed}
-              text={todo.text}
-            />
+          <TodoList
+            todos={todos}
+            onTodoClick={id => {
+              store.dispatch({
+                type: "TOGGLE_TODO",
+                id
+              });
+            }}
+          />
           ))}
         </ul>
         <p>
