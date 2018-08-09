@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Todo from "./components/Todo";
 import todoApp from "./reducers/todoApp";
 
 const store = createStore(todoApp);
@@ -63,7 +64,7 @@ export default class TodoApp extends Component {
         </button>
         <ul>
           {visibleTodos.map(todo => (
-            <li
+            <Todo
               key={todo.id}
               onClick={() => {
                 store.dispatch({
@@ -71,12 +72,9 @@ export default class TodoApp extends Component {
                   id: todo.id
                 });
               }}
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none"
-              }}
-            >
-              {todo.text}
-            </li>
+              completed={todo.completed}
+              text={todo.text}
+            />
           ))}
         </ul>
         <p>
