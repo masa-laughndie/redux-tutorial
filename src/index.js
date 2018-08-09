@@ -1,12 +1,9 @@
-import { createStore } from "redux";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import AddTodo from "./components/AddTodo";
 import Footer from "./components/Footer";
 import TodoList from "./components/TodoList";
-import todoApp from "./reducers/todoApp";
-
-const store = createStore(todoApp);
+import store from "./store";
 
 let nextTodoId = 0;
 
@@ -45,15 +42,7 @@ export default class TodoApp extends Component {
             });
           }}
         />
-        <Footer
-          visibilityFilter={visibilityFilter}
-          onFilterClick={filter => {
-            store.dispatch({
-              type: "SET_VISIBZILITY_FILTER",
-              filter
-            });
-          }}
-        />
+        <Footer />
       </div>
     );
   }

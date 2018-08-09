@@ -1,24 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
+import Link from "./Link";
+import store from "../store";
 
-export default function FilterLink({
-  filter,
-  currentFilter,
-  children,
-  onClick
-}) {
-  if (filter === currentFilter) {
-    return <span>{children}</span>;
+export default class FilterLink extends Component {
+  render() {
+    const { filter, children } = this.props;
+    const { visibilityFilter } = store.getState();
+
+    return (
+      <Link
+        active={filter === visibilityFilter}
+        onClick={() =>
+          store.dispatch({
+            type: "SET_VISIBILITY_FILTER",
+            filter
+          })
+        }
+      >
+        {children}
+      </Link>
+    );
   }
-
-  return (
-    <a
-      href="#"
-      onClick={e => {
-        e.preventDefault();
-        onClick(filter);
-      }}
-    >
-      {children}
-    </a>
-  );
 }
