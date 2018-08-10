@@ -16,10 +16,7 @@ export default function TodoApp() {
 }
 
 function render() {
-  ReactDOM.render(
-    <TodoApp {...store.getState()} />,
-    document.getElementById("root")
-  );
+  ReactDOM.render(<TodoApp />, document.getElementById("root"));
 }
 
 store.subscribe(render);
