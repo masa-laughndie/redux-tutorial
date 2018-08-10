@@ -17,11 +17,9 @@ export default function TodoApp({ store }) {
   );
 }
 
-function render() {
-  ReactDOM.render(
-    <Provider store={createStore(todoApp)}>
-      <TodoApp />
-    </Provider>,
-    document.getElementById("root")
-  );
-}
+ReactDOM.render(
+  <Provider store={createStore(todoApp)}>
+    <TodoApp />
+  </Provider>,
+  document.getElementById("root")
+);
