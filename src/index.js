@@ -7,25 +7,22 @@ import store from "./store";
 
 let nextTodoId = 0;
 
-export default class TodoApp extends Component {
-  render() {
-    const { todos, visibilityFilter } = this.props;
-    return (
-      <div>
-        <AddTodo
-          onAddClick={text => {
-            store.dispatch({
-              type: "ADD_TODO",
-              text,
-              id: nextTodoId++
-            });
-          }}
-        />
-        <VisibleTodoList />
-        <Footer />
-      </div>
-    );
-  }
+export default function TodoApp() {
+  return (
+    <div>
+      <AddTodo
+        onAddClick={text => {
+          store.dispatch({
+            type: "ADD_TODO",
+            text,
+            id: nextTodoId++
+          });
+        }}
+      />
+      <VisibleTodoList />
+      <Footer />
+    </div>
+  );
 }
 
 function render() {
