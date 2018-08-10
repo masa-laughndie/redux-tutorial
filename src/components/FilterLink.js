@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Link from "./Link";
-import store from "../store";
 
 export default class FilterLink extends Component {
   componentDidMount() {
+    const { store } = this.props;
     this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }
 
@@ -12,7 +12,7 @@ export default class FilterLink extends Component {
   }
 
   render() {
-    const { filter, children } = this.props;
+    const { filter, children, store } = this.props;
     const { visibilityFilter } = store.getState();
 
     return (

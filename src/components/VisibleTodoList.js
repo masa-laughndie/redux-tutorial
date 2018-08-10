@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import TodoList from "./TodoList";
-import store from "../store";
 
 function getVisibleTodos(todos, filter) {
   switch (filter) {
@@ -15,6 +14,7 @@ function getVisibleTodos(todos, filter) {
 
 export default class VisibleTodoList extends Component {
   componentDidMount() {
+    const { store } = this.props;
     this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }
 
@@ -23,6 +23,7 @@ export default class VisibleTodoList extends Component {
   }
 
   render() {
+    const { store } = this.props;
     const { todos, visibilityFilter } = store.getState();
 
     return (
