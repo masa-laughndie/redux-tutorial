@@ -4,8 +4,9 @@ import AddTodo from "./components/AddTodo";
 import Footer from "./components/Footer";
 import VisibleTodoList from "./components/VisibleTodoList";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import todoApp from "./reducers/todoApp";
+import { logger } from "redux-logger";
 
 export default function TodoApp({ store }) {
   return (
@@ -18,7 +19,7 @@ export default function TodoApp({ store }) {
 }
 
 ReactDOM.render(
-  <Provider store={createStore(todoApp)}>
+  <Provider store={createStore(todoApp, applyMiddleware(logger))}>
     <TodoApp />
   </Provider>,
   document.getElementById("root")
