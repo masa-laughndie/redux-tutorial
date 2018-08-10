@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import AddTodo from "./components/AddTodo";
 import Footer from "./components/Footer";
 import VisibleTodoList from "./components/VisibleTodoList";
-import Provider from "./components/Provider";
+import { Provider } from "react-redux";
 import { createStore } from "redux";
 import todoApp from "./reducers/todoApp";
 
