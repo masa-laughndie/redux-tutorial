@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Link from "./Link";
 
 export default class FilterLink extends Component {
   componentDidMount() {
-    const { store } = this.props;
+    const { store } = this.context;
     this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }
 
@@ -12,7 +13,8 @@ export default class FilterLink extends Component {
   }
 
   render() {
-    const { filter, children, store } = this.props;
+    const { filter, children } = this.props;
+    const { store } = this.context;
     const { visibilityFilter } = store.getState();
 
     return (
@@ -30,3 +32,7 @@ export default class FilterLink extends Component {
     );
   }
 }
+
+FilterLink.contextTypes = {
+  store: PropTypes.object
+};

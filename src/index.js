@@ -3,22 +3,25 @@ import ReactDOM from "react-dom";
 import AddTodo from "./components/AddTodo";
 import Footer from "./components/Footer";
 import VisibleTodoList from "./components/VisibleTodoList";
+import Provider from "./components/Provider";
 import { createStore } from "redux";
 import todoApp from "./reducers/todoApp";
 
 export default function TodoApp({ store }) {
   return (
     <div>
-      <AddTodo store={store} />
-      <VisibleTodoList store={store} />
-      <Footer store={store} />
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
     </div>
   );
 }
 
 function render() {
   ReactDOM.render(
-    <TodoApp store={createStore(todoApp)} />,
+    <Provider store={createStore(todoApp)}>
+      <TodoApp />
+    </Provider>,
     document.getElementById("root")
   );
 }
